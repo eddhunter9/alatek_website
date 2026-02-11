@@ -1,41 +1,41 @@
-import { Code, Cpu, BarChart3, Shield } from "lucide-react";
+import { Code, ShieldCheck, Cpu, Layers } from "lucide-react";
 import ProductCard from "./ProductCard";
 
 const softwareProducts = [
   {
-    title: "HDL Simulator Pro",
+    title: "Riviera-PRO",
     icon: Code,
     points: [
       "Premium HDL simulator for FPGA and ASIC designers",
-      "Supports VHDL, Verilog, and SystemVerilog standards",
-      "Integrated waveform viewer with advanced debugging tools",
+      "Ideal for mission-critical applications requiring robust verification libraries (OSVVM, UVVM)",
+      "Delivers the best ROI in the EDA market",
     ] as [string, string, string],
   },
   {
-    title: "Embedded IDE Suite",
+    title: "ALINT-PRO",
+    icon: ShieldCheck,
+    points: [
+      "Advanced Design Rule Checking and CDC/RDC analysis with unique \"Unit Linting\" technology.",
+      "Vendor-agnostic framework supporting direct import of Vivado, Quartus, and ISE projects.",
+      "Automated batch-mode processing optimized for CI/CD and Jenkins pipelines.",
+    ] as [string, string, string],
+  },
+  {
+    title: "DO-254/CTS",
     icon: Cpu,
     points: [
-      "Full-featured IDE for embedded system development",
-      "Real-time code analysis and optimization suggestions",
-      "Seamless integration with popular microcontroller families",
+      "DO-254 compliant FPGA verification for safety-critical applications in avionics, space, and defense.",
+      "At-speed In-Hardware Verification with automated testbench reuse.",
+      "Proven reduction of verification cycle from months to weeks with FAA-recognized tool flows.",
     ] as [string, string, string],
   },
   {
-    title: "Signal Analyzer",
-    icon: BarChart3,
+    title: "BFM",
+    icon: Layers,
     points: [
-      "Advanced signal processing and analysis platform",
-      "Multi-channel data acquisition and visualization",
-      "Custom plugin architecture for domain-specific analysis",
-    ] as [string, string, string],
-  },
-  {
-    title: "SecureLink Manager",
-    icon: Shield,
-    points: [
-      "Enterprise-grade firmware security management",
-      "Encrypted OTA update distribution system",
-      "Compliance reporting for industry certifications",
+      "Comprehensive AXI3/4/Stream models removing the need for manual protocol verification.",
+      "Eliminates time-consuming manual testbench development for standard bus protocols.",
+      "High-throughput communication via independent 5-channel architecture with internal FIFO buffering.",
     ] as [string, string, string],
   },
 ];
@@ -44,12 +44,9 @@ const SoftwareSection = () => {
   return (
     <section id="software" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground font-['Rajdhani']">
-          Software Solutions
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
+          ALATEK software solutions
         </h2>
-        <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-          Powerful tools built for engineers who demand precision and performance.
-        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {softwareProducts.map((p) => (
             <ProductCard key={p.title} {...p} />

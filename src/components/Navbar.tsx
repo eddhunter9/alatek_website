@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/alatek-logo.png";
 
 const navLinks = [
-  { label: "Software", href: "#software" },
+  { label: "Technology", href: "#software" },
   { label: "Products", href: "#products" },
   { label: "Contact", href: "#contact" },
 ];
