@@ -1,5 +1,6 @@
 import { CircuitBoard, Server, Cpu, Wrench } from "lucide-react";
 import ProductCard from "./ProductCard";
+import productsBg from "@/assets/products-bg.png";
 
 const accentColors = [
   "hsl(160, 80%, 45%)",
@@ -49,8 +50,9 @@ const hardwareProducts = [
 
 const ProductsSection = () => {
   return (
-    <section id="products" className="py-24 bg-secondary/30">
-      <div className="container mx-auto px-4">
+    <section id="products" className="py-24 relative bg-cover bg-center" style={{ backgroundImage: `url(${productsBg})` }}>
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
           Key ALATEK products
         </h2>

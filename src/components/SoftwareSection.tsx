@@ -1,5 +1,6 @@
 import { Code, ShieldCheck, Cpu, Layers } from "lucide-react";
 import ProductCard from "./ProductCard";
+import softwareBg from "@/assets/software-bg.png";
 
 const softwareProducts = [
   {
@@ -42,8 +43,9 @@ const softwareProducts = [
 
 const SoftwareSection = () => {
   return (
-    <section id="software" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="software" className="py-24 relative bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
+      <div className="absolute inset-0 bg-background/80" />
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
           ALATEK software solutions
         </h2>

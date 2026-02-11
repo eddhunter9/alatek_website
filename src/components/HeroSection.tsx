@@ -1,4 +1,4 @@
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/main-background.png";
 import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
