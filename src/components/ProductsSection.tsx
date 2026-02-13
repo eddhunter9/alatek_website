@@ -56,7 +56,7 @@ const ProductsSection = () => {
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
           Key ALATEK products
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {hardwareProducts.map((p, i) => (
             <ProductCard key={p.title} {...p} accentColor={accentColors[i]} />
           ))}
