@@ -45,7 +45,7 @@ const SoftwareSection = () => {
   return (
     <section id="software" className="relative overflow-visible">
       {/* Background fixed to a set height, doesn't grow with cards */}
-      <div className="absolute top-0 left-0 right-0 h-[600px] bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
+      <div className="absolute top-0 left-0 right-0 h-[900px] bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
