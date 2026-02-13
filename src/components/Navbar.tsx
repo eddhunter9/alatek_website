@@ -24,7 +24,7 @@ const Navbar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                className="text-sm font-semibold tracking-wide uppercase text-foreground/80 hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full"
               >
                 {l.label}
               </a>
@@ -53,7 +53,7 @@ const Navbar = () => {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  className="text-sm font-semibold tracking-wide uppercase text-foreground/80 hover:text-primary transition-colors"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
