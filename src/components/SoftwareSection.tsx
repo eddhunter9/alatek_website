@@ -43,9 +43,13 @@ const softwareProducts = [
 
 const SoftwareSection = () => {
   return (
-    <section id="software" className="py-32 pb-40 relative bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
-      <div className="absolute inset-0 bg-background/80" />
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="software" className="relative overflow-visible">
+      {/* Background fixed to a set height, doesn't grow with cards */}
+      <div className="absolute top-0 left-0 right-0 h-[600px] bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
+        <div className="absolute inset-0 bg-background/80" />
+      </div>
+
+      <div className="relative z-10 pt-32 pb-16 container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
           ALATEK software solutions
         </h2>
