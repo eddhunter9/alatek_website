@@ -43,7 +43,7 @@ const softwareProducts = [
 
 const SoftwareSection = () => {
   return (
-    <section id="software" className="py-24 relative bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
+    <section id="software" className="py-32 pb-40 relative bg-cover bg-center" style={{ backgroundImage: `url(${softwareBg})` }}>
       <div className="absolute inset-0 bg-background/80" />
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
