@@ -4,6 +4,7 @@ import logo from "@/assets/alatek-logo.png";
 
 const navLinks = [
   { label: "Technology", href: "#software" },
+  { label: "About Us", href: "#about" },
   // { label: "Products", href: "#products" },
   { label: "Contact", href: "#contact" },
 ];
