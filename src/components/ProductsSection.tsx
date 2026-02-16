@@ -50,13 +50,10 @@ const hardwareProducts = [
 
 const ProductsSection = () => {
   return (
-    <section id="products" className="relative overflow-visible">
-      {/* Background fixed to a set height, doesn't grow with cards */}
-      <div className="absolute top-0 left-0 right-0 h-[900px] bg-cover bg-center" style={{ backgroundImage: `url(${productsBg})` }}>
-        <div className="absolute inset-0 bg-background/80" />
-      </div>
+    <section id="products" className="py-24 relative bg-cover bg-center min-h-[650px]" style={{ backgroundImage: `url(${productsBg})` }}>
+      <div className="absolute inset-0 bg-background/80" />
 
-      <div className="relative z-10 pt-32 pb-16 container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
           Key ALATEK products
         </h2>

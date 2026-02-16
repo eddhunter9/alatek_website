@@ -13,7 +13,7 @@ const ProductCard = ({ title, icon: Icon, points, accentColor = "hsl(var(--prima
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--glow)/0.1)] flex flex-col min-h-[220px]">
+    <div className={`bg-card border border-border rounded-xl p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--glow)/0.1)] flex flex-col ${expanded ? 'min-h-[410px]' : 'min-h-[250px]'}`}>
       <div className="mb-4 w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${accentColor}20` }}>
         <Icon size={24} style={{ color: accentColor }} />
       </div>
