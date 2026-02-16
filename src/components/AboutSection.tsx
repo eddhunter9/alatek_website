@@ -121,13 +121,13 @@ const AboutSection = () => {
                   className="relative flex items-start md:items-center"
                 >
                   {/* Dot on the line */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-2 md:top-1/2 md:-translate-y-1.5 z-10" />
+                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-6 z-10" />
 
                   {/* Desktop layout */}
                   <div className="hidden md:grid grid-cols-2 gap-8 w-full">
                     {isLeft ? (
                       <>
-                        <div className="text-right pr-10">
+                        <div className="pr-10">
                           <TimelineCard year={m.year} era={m.era} points={m.points} />
                         </div>
                         <div />
