@@ -104,8 +104,8 @@ const gapMargins = milestones.map((m, i) => {
   const prevYear = getStartYear(milestones[i - 1].year);
   const currYear = getStartYear(m.year);
   const gap = prevYear - currYear;
-  // Base: 24px per year, offset by -40 for overlap effect
-  return gap * 24 - 40;
+  // Tighter overlap with proportional spacing
+  return gap * 16 - 48;
 });
 
 const AboutSection = () => {
