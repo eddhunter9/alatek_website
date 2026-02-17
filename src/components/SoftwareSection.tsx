@@ -1,11 +1,13 @@
 import { Code, ShieldCheck, Cpu, Layers } from "lucide-react";
 import ProductCard from "./ProductCard";
 import softwareBg from "@/assets/software-bg.png";
+import rivieraProImg from "@/assets/product-riviera-pro.png";
 
 const softwareProducts = [
   {
     title: "Riviera-PRO",
     icon: Code,
+    image: rivieraProImg,
     points: [
       "Premium HDL simulator for FPGA and ASIC designers",
       "Ideal for mission-critical applications requiring robust verification libraries (OSVVM, UVVM)",

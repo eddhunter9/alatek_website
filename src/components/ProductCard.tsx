@@ -7,13 +7,20 @@ interface ProductCardProps {
   icon: LucideIcon;
   points: [string, string, string];
   accentColor?: string;
+  image?: string;
 }
 
-const ProductCard = ({ title, icon: Icon, points, accentColor = "hsl(var(--primary))" }: ProductCardProps) => {
+const ProductCard = ({ title, icon: Icon, points, accentColor = "hsl(var(--primary))", image }: ProductCardProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className={`bg-card border border-border rounded-xl p-6 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--glow)/0.1)] flex flex-col ${expanded ? 'min-h-[410px]' : 'min-h-[250px]'}`}>
+    <div className={`bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--glow)/0.1)] flex flex-col ${expanded ? 'min-h-[410px]' : 'min-h-[250px]'}`}>
+      {image && (
+        <div className="w-full h-32 overflow-hidden">
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        </div>
+      )}
+      <div className="p-6 flex flex-col flex-1">
       <div className="mb-4 w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${accentColor}20` }}>
         <Icon size={24} style={{ color: accentColor }} />
       </div>
@@ -45,6 +52,7 @@ const ProductCard = ({ title, icon: Icon, points, accentColor = "hsl(var(--prima
         {expanded ? "Show less" : "Show more"}
         {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
       </button>
+      </div>
     </div>
   );
 };
