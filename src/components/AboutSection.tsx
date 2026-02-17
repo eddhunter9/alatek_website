@@ -107,7 +107,7 @@ const AboutSection = () => {
           {/* Central line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-0">
             {milestones.map((m, i) => {
               const isLeft = i % 2 === 0;
 
@@ -118,7 +118,7 @@ const AboutSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="relative flex items-start md:items-center"
+                  className={`relative flex items-start md:items-center ${i === 0 ? '' : 'md:-mt-16 mt-6'}`}
                 >
                   {/* Dot on the line */}
                   <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-6 z-10" />
