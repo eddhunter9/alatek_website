@@ -12,14 +12,63 @@ const contactSchema = z.object({
   message: z.string().trim().min(1, "Message is required").max(2000),
 });
 
+const RATE_LIMIT_KEY = "contact_form_timestamps";
+const RATE_LIMIT_MAX = 2;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+function isRateLimited(): boolean {
+  try {
+    const raw = localStorage.getItem(RATE_LIMIT_KEY);
+    const timestamps: number[] = raw ? JSON.parse(raw) : [];
+    const now = Date.now();
+    const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+    return recent.length >= RATE_LIMIT_MAX;
+  } catch {
+    return false;
+  }
+}
+
+function recordSubmission() {
+  try {
+    const raw = localStorage.getItem(RATE_LIMIT_KEY);
+    const timestamps: number[] = raw ? JSON.parse(raw) : [];
+    const now = Date.now();
+    const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+    recent.push(now);
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recent));
+  } catch {
+    // silently fail
+  }
+}
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Honeypot check – bots fill hidden fields
+    if (honeypot) {
+      // Fake success so bot doesn't retry
+      toast({ title: "Message sent!", description: "We'll get back to you soon." });
+      setForm({ name: "", email: "", message: "" });
+      return;
+    }
+
+    // Rate limiting check
+    if (isRateLimited()) {
+      toast({
+        title: "Too many messages",
+        description: "Please wait before sending another message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const result = contactSchema.safeParse(form);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -32,8 +81,9 @@ const ContactSection = () => {
     setErrors({});
     setSending(true);
 
-    // TODO: connect to Lovable Cloud edge function
+    // TODO: connect to Formspree or backend
     await new Promise((r) => setTimeout(r, 1000));
+    recordSubmission();
     toast({ title: "Message sent!", description: "We'll get back to you soon." });
     setForm({ name: "", email: "", message: "" });
     setSending(false);
@@ -69,6 +119,17 @@ const ContactSection = () => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Honeypot – invisible to humans, bots fill it */}
+            <div className="absolute opacity-0 -z-10 h-0 overflow-hidden" aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
             <div>
               <Input
                 placeholder="Name"
