@@ -81,11 +81,29 @@ const ContactSection = () => {
     setErrors({});
     setSending(true);
 
-    // TODO: connect to Formspree or backend
-    await new Promise((r) => setTimeout(r, 1000));
-    recordSubmission();
-    toast({ title: "Message sent!", description: "We'll get back to you soon." });
-    setForm({ name: "", email: "", message: "" });
+    const FORMSPREE_ID = "xrealklp";
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+
+      if (response.ok) {
+        recordSubmission();
+        toast({ title: "Message sent!", description: "We'll get back to you soon." });
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Error", description: "Network error. Please check your connection.", variant: "destructive" });
+    }
     setSending(false);
   };
 
