@@ -16,25 +16,29 @@ const RATE_LIMIT_KEY = "contact_form_timestamps";
 const RATE_LIMIT_MAX = 2;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
-function isRateLimited(): boolean {
+function getRecentSubmissions(now = Date.now()): number[] {
   try {
     const raw = localStorage.getItem(RATE_LIMIT_KEY);
-    const timestamps: number[] = raw ? JSON.parse(raw) : [];
-    const now = Date.now();
-    const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-    return recent.length >= RATE_LIMIT_MAX;
+    const timestamps: unknown = raw ? JSON.parse(raw) : [];
+
+    if (!Array.isArray(timestamps)) return [];
+
+    return timestamps
+      .map((t) => Number(t))
+      .filter((t) => Number.isFinite(t) && now - t < RATE_LIMIT_WINDOW_MS);
   } catch {
-    return false;
+    return [];
   }
+}
+
+function isRateLimited(): boolean {
+  return getRecentSubmissions().length >= RATE_LIMIT_MAX;
 }
 
 function recordSubmission() {
   try {
-    const raw = localStorage.getItem(RATE_LIMIT_KEY);
-    const timestamps: number[] = raw ? JSON.parse(raw) : [];
-    const now = Date.now();
-    const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-    recent.push(now);
+    const recent = getRecentSubmissions();
+    recent.push(Date.now());
     localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recent));
   } catch {
     // silently fail
@@ -50,6 +54,8 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (sending) return;
 
     // Honeypot check – bots fill hidden fields
     if (honeypot) {
@@ -78,8 +84,10 @@ const ContactSection = () => {
       setErrors(fieldErrors);
       return;
     }
+
     setErrors({});
     setSending(true);
+    recordSubmission();
 
     const FORMSPREE_ID = "xrealklp";
 
@@ -95,7 +103,6 @@ const ContactSection = () => {
       });
 
       if (response.ok) {
-        recordSubmission();
         toast({ title: "Message sent!", description: "We'll get back to you soon." });
         setForm({ name: "", email: "", message: "" });
       } else {
@@ -104,6 +111,7 @@ const ContactSection = () => {
     } catch {
       toast({ title: "Error", description: "Network error. Please check your connection.", variant: "destructive" });
     }
+
     setSending(false);
   };
 
