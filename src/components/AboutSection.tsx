@@ -120,18 +120,30 @@ const AboutSection = () => {
 
         {/* Mission & Vision */}
         <div className="max-w-4xl mx-auto mb-20 grid md:grid-cols-2 gap-6">
-          <div className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-all duration-300">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-all duration-300"
+          >
             <h3 className="text-2xl font-bold font-['Rajdhani'] text-primary mb-4">Our Mission</h3>
             <p className="text-muted-foreground leading-relaxed">
               To empower engineers and organizations worldwide with cutting-edge FPGA, ASIC, and embedded systems solutions — enabling faster innovation cycles, safer designs, and seamless hardware-software integration.
             </p>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-all duration-300">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-all duration-300"
+          >
             <h3 className="text-2xl font-bold font-['Rajdhani'] text-primary mb-4">Our Vision</h3>
             <p className="text-muted-foreground leading-relaxed">
               To be Europe's leading partner for advanced electronic design automation, bridging the gap between innovative ideas and production-ready hardware with world-class tools and expert engineering support.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         <h3 className="text-2xl md:text-3xl font-bold text-center mb-14 text-foreground/80 font-['Rajdhani']">
