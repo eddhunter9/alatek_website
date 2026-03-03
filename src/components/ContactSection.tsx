@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -118,13 +119,25 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']"
+        >
           Contact Us
-        </h2>
+        </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           {/* Info */}
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
             <h3 className="text-2xl font-semibold font-['Rajdhani'] text-foreground">Get in Touch</h3>
             <p className="text-muted-foreground">
               Have questions about our products or services? Reach out and our team will get back to you promptly.
@@ -141,10 +154,17 @@ const ContactSection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <motion.form
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            onSubmit={handleSubmit}
+            className="space-y-5"
+          >
             {/* Honeypot – invisible to humans, bots fill it */}
             <div className="absolute opacity-0 -z-10 h-0 overflow-hidden" aria-hidden="true">
               <input
@@ -188,7 +208,7 @@ const ContactSection = () => {
             <Button type="submit" size="lg" className="w-full" disabled={sending}>
               {sending ? "Sending…" : "Send Message"}
             </Button>
-          </form>
+          </motion.form>
         </div>
       </div>
     </section>

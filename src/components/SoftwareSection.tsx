@@ -2,6 +2,7 @@ import { Code, ShieldCheck, Cpu, Layers } from "lucide-react";
 import ProductCard from "./ProductCard";
 import softwareBg from "@/assets/software-bg.png";
 import rivieraProImg from "@/assets/product-riviera-pro.png";
+import { motion } from "framer-motion";
 
 const softwareProducts = [
   {
@@ -49,12 +50,26 @@ const SoftwareSection = () => {
       <div className="absolute inset-0 bg-background/80" />
 
       <div className="relative z-10 container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']"
+        >
           ALATEK software solutions
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-          {softwareProducts.map((p) => (
-            <ProductCard key={p.title} {...p} />
+          {softwareProducts.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <ProductCard {...p} />
+            </motion.div>
           ))}
         </div>
       </div>
