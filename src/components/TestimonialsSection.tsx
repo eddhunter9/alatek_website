@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -49,8 +50,12 @@ const TestimonialsSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="bg-card border-2 border-border rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:border-primary hover:shadow-[0_0_24px_hsl(var(--glow)/0.15)]"
             >
               <div>
@@ -71,7 +76,7 @@ const TestimonialsSection = () => {
                   Solution: {t.solution} →
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
