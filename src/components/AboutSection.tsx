@@ -127,7 +127,13 @@ const AboutSection = () => {
           className="max-w-5xl mx-auto mb-24 relative"
         >
           {/* Decorative vertical accent */}
-          <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-primary via-accent to-primary/20 rounded-full hidden md:block" />
+          <div className="absolute left-0 top-8 bottom-8 w-1 rounded-full hidden md:block overflow-hidden">
+            <motion.div
+              className="w-full h-[200%] bg-gradient-to-b from-primary via-accent via-50% to-primary"
+              animate={{ y: [0, "-50%"] }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+            />
+          </div>
 
           <div className="md:pl-10 space-y-12">
             <motion.div
