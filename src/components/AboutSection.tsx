@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useRef } from "react";
 const milestones = [
   {
     year: "2021",
@@ -110,9 +111,24 @@ const gapMargins = milestones.map((m, i) => {
 
 const AboutSection = () => {
   const isMobile = useIsMobile();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
-    <section id="about" className="py-24 relative bg-background">
+    <section id="about" ref={sectionRef} className="py-24 relative bg-background overflow-hidden">
+      {/* Parallax decorative background */}
+      <motion.div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          y: bgY,
+          backgroundImage: "radial-gradient(circle at 20% 50%, hsl(var(--primary)) 0%, transparent 50%), radial-gradient(circle at 80% 50%, hsl(var(--accent)) 0%, transparent 50%)",
+          backgroundSize: "100% 100%",
+        }}
+      />
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground font-['Rajdhani']">
           About Us
