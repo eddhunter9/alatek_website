@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -12,6 +12,16 @@ interface ProductCardProps {
 
 const ProductCard = ({ title, icon: Icon, points, accentColor = "hsl(var(--primary))", image }: ProductCardProps) => {
   const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      if ((e as CustomEvent).detail === title) {
+        setExpanded(true);
+      }
+    };
+    window.addEventListener("expand-product", handler);
+    return () => window.removeEventListener("expand-product", handler);
+  }, [title]);
 
   return (
     <div className={`bg-card border border-border rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--glow)/0.1)] flex flex-col ${expanded ? 'min-h-[410px]' : 'min-h-[250px]'}`}>

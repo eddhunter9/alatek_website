@@ -11,32 +11,37 @@ const testimonials = [
   {
     quote: "Outstanding support and deep technical expertise in FPGA design services.",
     company: "Defense Systems Ltd.",
-    solution: "HES Board",
-    solutionHref: "#products",
+    solution: "Riviera-PRO",
+    solutionHref: "#software",
+    solutionId: "Riviera-PRO",
   },
   {
     quote: "We reduced our verification time by 40% using their hardware emulation platform.",
     company: "Silicon Valley Startup",
-    solution: "HES-HPC",
-    solutionHref: "#products",
+    solution: "ALINT-PRO",
+    solutionHref: "#software",
+    solutionId: "ALINT-PRO",
   },
   {
     quote: "Reliable partner for space-grade FPGA prototyping with excellent turnaround.",
     company: "Space Technologies GmbH",
-    solution: "RT Chip Interposer",
-    solutionHref: "#products",
+    solution: "DO-254/CTS",
+    solutionHref: "#software",
+    solutionId: "DO-254/CTS",
   },
   {
     quote: "Their custom PCB assembly quality exceeded our expectations for complex SoC designs.",
     company: "MedTech Solutions",
-    solution: "Service",
-    solutionHref: "#contact",
+    solution: "BFM",
+    solutionHref: "#software",
+    solutionId: "BFM",
   },
   {
     quote: "A key technology partner enabling our edge-computing AI deployments.",
     company: "AutoDrive Inc.",
-    solution: "TySOM-3-ZU7EV",
-    solutionHref: "#products",
+    solution: "Riviera-PRO",
+    solutionHref: "#software",
+    solutionId: "Riviera-PRO",
   },
 ];
 
@@ -71,6 +76,13 @@ const TestimonialsSection = () => {
                 </p>
                 <a
                   href={t.solutionHref}
+                  onClick={(e) => {
+                    if (t.solutionId) {
+                      e.preventDefault();
+                      window.dispatchEvent(new CustomEvent("expand-product", { detail: t.solutionId }));
+                      document.querySelector(t.solutionHref)?.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                   className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-1"
                 >
                   Solution: {t.solution} →
