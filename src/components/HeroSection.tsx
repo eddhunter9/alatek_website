@@ -1,17 +1,30 @@
 import heroBg from "@/assets/main-background.png";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const HeroSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${heroBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      ref={ref}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
+      <motion.div
+        className="absolute inset-0 -top-[10%] bottom-0"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          y: bgY,
+        }}
+      />
       <div className="absolute inset-0 bg-background/60" />
       <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
         <motion.h1

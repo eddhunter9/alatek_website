@@ -118,33 +118,53 @@ const AboutSection = () => {
           About Us
         </h2>
 
-        {/* Mission & Vision */}
-        <div className="max-w-4xl mx-auto mb-20 grid md:grid-cols-2 gap-6">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold font-['Rajdhani'] text-primary mb-4">Our Mission</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              To empower engineers and organizations worldwide with cutting-edge FPGA, ASIC, and embedded systems solutions — enabling faster innovation cycles, safer designs, and seamless hardware-software integration.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="bg-card border border-border rounded-xl p-8 hover:border-primary/40 transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold font-['Rajdhani'] text-primary mb-4">Our Vision</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              To be Europe's leading partner for advanced electronic design automation, bridging the gap between innovative ideas and production-ready hardware with world-class tools and expert engineering support.
-            </p>
-          </motion.div>
-        </div>
+        {/* Mission & Vision — unified statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="max-w-5xl mx-auto mb-24 relative"
+        >
+          {/* Decorative vertical accent */}
+          <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-primary via-accent to-primary/20 rounded-full hidden md:block" />
+
+          <div className="md:pl-10 space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary/70 font-['Rajdhani']">
+                Our Mission
+              </span>
+              <p className="text-2xl md:text-3xl font-light text-foreground leading-snug mt-3">
+                To empower engineers and organizations worldwide with cutting-edge
+                <span className="text-primary font-medium"> FPGA, ASIC, and embedded systems </span>
+                solutions — enabling faster innovation cycles, safer designs, and seamless hardware-software integration.
+              </p>
+            </motion.div>
+
+            <div className="h-px bg-gradient-to-r from-primary/40 via-border to-transparent" />
+
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+            >
+              <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary/70 font-['Rajdhani']">
+                Our Vision
+              </span>
+              <p className="text-2xl md:text-3xl font-light text-foreground leading-snug mt-3">
+                To be Europe's leading partner for
+                <span className="text-primary font-medium"> advanced electronic design automation</span>,
+                bridging the gap between innovative ideas and production-ready hardware with world-class tools and expert engineering support.
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
 
         <h3 className="text-2xl md:text-3xl font-bold text-center mb-14 text-foreground/80 font-['Rajdhani']">
           Our Journey
