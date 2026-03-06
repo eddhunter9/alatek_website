@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useRef } from "react";
+import aboutBg from "@/assets/about-bg.jpg";
+import timelineBg from "@/assets/timeline-bg.jpg";
 const milestones = [
   {
     year: "2021",
@@ -119,16 +121,16 @@ const AboutSection = () => {
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 relative bg-background overflow-hidden">
-      {/* Parallax decorative background */}
+    <section id="about" ref={sectionRef} className="py-24 relative overflow-hidden">
+      {/* About section background image */}
       <motion.div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          y: bgY,
-          backgroundImage: "radial-gradient(circle at 20% 50%, hsl(var(--primary)) 0%, transparent 50%), radial-gradient(circle at 80% 50%, hsl(var(--accent)) 0%, transparent 50%)",
-          backgroundSize: "100% 100%",
-        }}
-      />
+        className="absolute inset-0 pointer-events-none"
+        style={{ y: bgY }}
+      >
+        <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.15]" />
+      </motion.div>
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-background/80 pointer-events-none" />
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground font-['Rajdhani']">
           About Us
@@ -193,7 +195,12 @@ const AboutSection = () => {
         </h3>
 
         {/* Timeline */}
-        <div className="relative">
+        <div className="relative rounded-2xl overflow-hidden">
+          {/* Timeline background */}
+          <div className="absolute inset-0 pointer-events-none">
+            <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.12]" />
+          </div>
+          <div className="absolute inset-0 bg-background/70 pointer-events-none" />
           {/* Central line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
 
