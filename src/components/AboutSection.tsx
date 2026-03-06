@@ -127,10 +127,10 @@ const AboutSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{ y: bgY }}
       >
-        <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.15]" />
+        <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.4]" />
       </motion.div>
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-background/50 pointer-events-none" />
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground font-['Rajdhani']">
           About Us
@@ -198,9 +198,9 @@ const AboutSection = () => {
         <div className="relative rounded-2xl overflow-hidden">
           {/* Timeline background */}
           <div className="absolute inset-0 pointer-events-none">
-            <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.12]" />
+            <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.35]" />
           </div>
-          <div className="absolute inset-0 bg-background/70 pointer-events-none" />
+          <div className="absolute inset-0 bg-background/50 pointer-events-none" />
           {/* Central line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
 
