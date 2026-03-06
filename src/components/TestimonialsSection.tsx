@@ -1,5 +1,7 @@
 import { Quote } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import testimonialsBg from "@/assets/testimonials-bg.jpg";
 
 const testimonials = [
   {
@@ -46,9 +48,20 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+
   return (
-    <section id="testimonials" className="py-24 relative">
-      <div className="container mx-auto px-4">
+    <section id="testimonials" ref={sectionRef} className="py-24 relative overflow-hidden">
+      <motion.div className="absolute inset-0 pointer-events-none" style={{ y: bgY }}>
+        <img src={testimonialsBg} alt="" className="w-full h-full object-cover opacity-[0.5]" />
+      </motion.div>
+      <div className="absolute inset-0 bg-background/30 pointer-events-none" />
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-foreground font-['Rajdhani']">
           What Our Clients Say
         </h2>
