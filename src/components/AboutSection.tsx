@@ -122,15 +122,6 @@ const AboutSection = () => {
 
   return (
     <section id="about" ref={sectionRef} className="py-24 relative overflow-hidden">
-      {/* About section background image */}
-      <motion.div
-        className="absolute -inset-y-[20%] inset-x-0 pointer-events-none"
-        style={{ y: bgY }}
-      >
-        <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.75]" />
-      </motion.div>
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/20 pointer-events-none" />
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground font-['Rajdhani']">
           About Us
