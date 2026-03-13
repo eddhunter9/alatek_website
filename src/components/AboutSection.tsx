@@ -124,7 +124,7 @@ const AboutSection = () => {
     <section id="about" ref={sectionRef} className="py-24 relative overflow-hidden">
       {/* About section background image */}
       <motion.div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute -inset-y-[20%] inset-x-0 pointer-events-none"
         style={{ y: bgY }}
       >
         <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.75]" />
