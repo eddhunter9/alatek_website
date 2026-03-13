@@ -245,64 +245,68 @@ const AboutSection = () => {
         </div>
       </div>
 
-        <h3 className="text-2xl md:text-3xl font-bold text-center mb-14 text-foreground/80 font-['Rajdhani']">
-          Our Journey
-        </h3>
+      {/* Timeline section - separate from about bg */}
+      <div className="pt-24 pb-24">
+        <div className="container mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-center mb-14 text-foreground/80 font-['Rajdhani']">
+            Our Journey
+          </h3>
 
-        {/* Timeline */}
-        <div className="relative rounded-2xl overflow-hidden">
-          {/* Timeline background */}
-          <div className="absolute inset-0 pointer-events-none">
-            <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.7]" />
-          </div>
-          <div className="absolute inset-0 bg-background/20 pointer-events-none" />
-          {/* Central line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
+          {/* Timeline */}
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Timeline background */}
+            <div className="absolute inset-0 pointer-events-none">
+              <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.7]" />
+            </div>
+            <div className="absolute inset-0 bg-background/20 pointer-events-none" />
+            {/* Central line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
 
-          <div className="flex flex-col gap-0">
-            {milestones.map((m, i) => {
-              const isLeft = i % 2 === 0;
-              const topMargin = i === 0 ? 0 : isMobile ? 24 : gapMargins[i];
+            <div className="flex flex-col gap-0">
+              {milestones.map((m, i) => {
+                const isLeft = i % 2 === 0;
+                const topMargin = i === 0 ? 0 : isMobile ? 24 : gapMargins[i];
 
-              return (
-                <motion.div
-                  key={m.year}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="relative flex items-start md:items-center"
-                  style={{ marginTop: topMargin }}
-                >
-                  {/* Dot on the line */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-6 z-10" />
+                return (
+                  <motion.div
+                    key={m.year}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="relative flex items-start md:items-center"
+                    style={{ marginTop: topMargin }}
+                  >
+                    {/* Dot on the line */}
+                    <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-6 z-10" />
 
-                  {/* Desktop layout */}
-                  <div className="hidden md:grid grid-cols-2 gap-8 w-full">
-                    {isLeft ? (
-                      <>
-                        <div className="pr-10">
-                          <TimelineCard year={m.year} era={m.era} points={m.points} />
-                        </div>
-                        <div />
-                      </>
-                    ) : (
-                      <>
-                        <div />
-                        <div className="pl-10">
-                          <TimelineCard year={m.year} era={m.era} points={m.points} />
-                        </div>
-                      </>
-                    )}
-                  </div>
+                    {/* Desktop layout */}
+                    <div className="hidden md:grid grid-cols-2 gap-8 w-full">
+                      {isLeft ? (
+                        <>
+                          <div className="pr-10">
+                            <TimelineCard year={m.year} era={m.era} points={m.points} />
+                          </div>
+                          <div />
+                        </>
+                      ) : (
+                        <>
+                          <div />
+                          <div className="pl-10">
+                            <TimelineCard year={m.year} era={m.era} points={m.points} />
+                          </div>
+                        </>
+                      )}
+                    </div>
 
-                  {/* Mobile layout */}
-                  <div className="md:hidden pl-10 w-full">
-                    <TimelineCard year={m.year} era={m.era} points={m.points} />
-                  </div>
-                </motion.div>
-              );
-            })}
+                    {/* Mobile layout */}
+                    <div className="md:hidden pl-10 w-full">
+                      <TimelineCard year={m.year} era={m.era} points={m.points} />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
