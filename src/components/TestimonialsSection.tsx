@@ -57,7 +57,7 @@ const TestimonialsSection = () => {
 
   return (
     <section id="testimonials" ref={sectionRef} className="py-24 relative overflow-hidden">
-      <motion.div className="absolute inset-0 pointer-events-none" style={{ y: bgY }}>
+      <motion.div className="absolute -inset-y-[20%] inset-x-0 pointer-events-none" style={{ y: bgY }}>
         <img src={testimonialsBg} alt="" className="w-full h-full object-cover opacity-[0.5]" />
       </motion.div>
       <div className="absolute inset-0 bg-background/30 pointer-events-none" />
