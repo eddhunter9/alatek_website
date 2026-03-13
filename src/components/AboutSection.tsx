@@ -121,185 +121,192 @@ const AboutSection = () => {
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 relative overflow-hidden">
-      {/* About section background image */}
-      <motion.div
-        className="absolute -inset-y-[20%] inset-x-0 pointer-events-none"
-        style={{ y: bgY }}
-      >
-        <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.75]" />
-      </motion.div>
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/20 pointer-events-none" />
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground font-['Rajdhani']">
-          About Us
-        </h2>
-
-        {/* Mission & Vision — unified statement */}
+    <section id="about" ref={sectionRef} className="relative overflow-hidden">
+      {/* About section background - covers only mission/vision, not timeline */}
+      <div className="relative pt-24 pb-24 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="max-w-5xl mx-auto mb-24 relative"
+          className="absolute -inset-y-[20%] inset-x-0 pointer-events-none"
+          style={{ y: bgY }}
         >
-          {/* Decorative vertical accent */}
-          <div className="absolute left-0 top-8 bottom-8 w-1 rounded-full hidden md:block overflow-hidden">
-            <motion.div
-              className="w-full h-[200%] bg-gradient-to-b from-primary via-accent via-50% to-primary"
-              animate={{ y: [0, "-50%"] }}
-              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-            />
-          </div>
-
-          <div className="md:pl-10 space-y-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary/70 font-['Rajdhani']">
-                Our Mission
-              </span>
-              <p className="text-2xl md:text-3xl font-light text-foreground leading-snug mt-3">
-                To empower engineers and organizations worldwide with cutting-edge
-                <span className="text-primary font-medium"> FPGA, ASIC, and embedded systems </span>
-                solutions — enabling faster innovation cycles, safer designs, and seamless hardware-software integration.
-              </p>
-            </motion.div>
-
-            <div className="h-px bg-gradient-to-r from-primary/40 via-border to-transparent" />
-
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-            >
-              <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary/70 font-['Rajdhani']">
-                Our Vision
-              </span>
-              <p className="text-2xl md:text-3xl font-light text-foreground leading-snug mt-3 mb-6">
-                Create technology solutions that meet real human needs using engineering standards proven in space.
-                Work with R&D teams to develop innovations that push technical limits by meeting the demands of the most extreme operating environment —
-                <span className="text-primary font-medium"> space</span>.
-              </p>
-
-              {/* Strategic Pillars */}
-              <div className="mb-8">
-                <h4 className="text-lg font-bold text-primary font-['Rajdhani'] tracking-wide uppercase mb-4">
-                  Strategic Pillars
-                </h4>
-                <div className="space-y-3 pl-4 border-l-2 border-primary/30">
-                  <div>
-                    <span className="text-primary font-semibold">1. Engineering Excellence</span>
-                    <p className="text-muted-foreground mt-1 ml-4">Build FPGA systems with exceptional reliability, performance, and precision.</p>
-                  </div>
-                  <div>
-                    <span className="text-primary font-semibold">2. Space-Grade Thinking</span>
-                    <p className="text-muted-foreground mt-1 ml-4">Apply engineering standards proven in space to real-world technology challenges.</p>
-                  </div>
-                  <div>
-                    <span className="text-primary font-semibold">3. Real-World Impact</span>
-                    <p className="text-muted-foreground mt-1 ml-4">Develop solutions that solve meaningful technical and industrial problems.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Core Values */}
-              <div className="mb-8">
-                <h4 className="text-lg font-bold text-primary font-['Rajdhani'] tracking-wide uppercase mb-4">
-                  Core Values
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-4">
-                  {[
-                    { title: "Reliability", desc: "Systems must work where failure is not an option." },
-                    { title: "Engineering Discipline", desc: "Decisions are driven by physics, data, and testing." },
-                    { title: "Technical Courage", desc: "Push boundaries and explore new technical possibilities." },
-                    { title: "Collaboration", desc: "Breakthrough technologies are built by strong engineering teams." },
-                  ].map((v) => (
-                    <div key={v.title} className="flex items-start gap-3">
-                      <span className="text-primary mt-1 flex-shrink-0">◆</span>
-                      <div>
-                        <span className="text-foreground font-semibold">{v.title}</span>
-                        <p className="text-sm text-muted-foreground mt-0.5">{v.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Motto */}
-              <div className="border-l-4 border-primary pl-5 py-2 bg-primary/5 rounded-r-lg">
-                <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary/60 font-['Rajdhani']">Engineering Motto</span>
-                <p className="text-xl md:text-2xl font-medium text-foreground italic mt-1">
-                  "Space-proven engineering for real-world problems."
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          <img src={aboutBg} alt="" className="w-full h-full object-cover opacity-[0.75]" />
         </motion.div>
+        <div className="absolute inset-0 bg-background/20 pointer-events-none" />
 
-        <h3 className="text-2xl md:text-3xl font-bold text-center mb-14 text-foreground/80 font-['Rajdhani']">
-          Our Journey
-        </h3>
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground font-['Rajdhani']">
+            About Us
+          </h2>
 
-        {/* Timeline */}
-        <div className="relative rounded-2xl overflow-hidden">
-          {/* Timeline background */}
-          <div className="absolute inset-0 pointer-events-none">
-            <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.7]" />
-          </div>
-          <div className="absolute inset-0 bg-background/20 pointer-events-none" />
-          {/* Central line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
+          {/* Mission & Vision — unified statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7 }}
+            className="max-w-5xl mx-auto relative"
+          >
+            {/* Decorative vertical accent */}
+            <div className="absolute left-0 top-8 bottom-8 w-1 rounded-full hidden md:block overflow-hidden">
+              <motion.div
+                className="w-full h-[200%] bg-gradient-to-b from-primary via-accent via-50% to-primary"
+                animate={{ y: [0, "-50%"] }}
+                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+              />
+            </div>
 
-          <div className="flex flex-col gap-0">
-            {milestones.map((m, i) => {
-              const isLeft = i % 2 === 0;
-              const topMargin = i === 0 ? 0 : isMobile ? 24 : gapMargins[i];
+            <div className="md:pl-10 space-y-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary/70 font-['Rajdhani']">
+                  Our Mission
+                </span>
+                <p className="text-2xl md:text-3xl font-light text-foreground leading-snug mt-3">
+                  To empower engineers and organizations worldwide with cutting-edge
+                  <span className="text-primary font-medium"> FPGA, ASIC, and embedded systems </span>
+                  solutions — enabling faster innovation cycles, safer designs, and seamless hardware-software integration.
+                </p>
+              </motion.div>
 
-              return (
-                <motion.div
-                  key={m.year}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="relative flex items-start md:items-center"
-                  style={{ marginTop: topMargin }}
-                >
-                  {/* Dot on the line */}
-                  <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-6 z-10" />
+              <div className="h-px bg-gradient-to-r from-primary/40 via-border to-transparent" />
 
-                  {/* Desktop layout */}
-                  <div className="hidden md:grid grid-cols-2 gap-8 w-full">
-                    {isLeft ? (
-                      <>
-                        <div className="pr-10">
-                          <TimelineCard year={m.year} era={m.era} points={m.points} />
-                        </div>
-                        <div />
-                      </>
-                    ) : (
-                      <>
-                        <div />
-                        <div className="pl-10">
-                          <TimelineCard year={m.year} era={m.era} points={m.points} />
-                        </div>
-                      </>
-                    )}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+              >
+                <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary/70 font-['Rajdhani']">
+                  Our Vision
+                </span>
+                <p className="text-2xl md:text-3xl font-light text-foreground leading-snug mt-3 mb-6">
+                  Create technology solutions that meet real human needs using engineering standards proven in space.
+                  Work with R&D teams to develop innovations that push technical limits by meeting the demands of the most extreme operating environment —
+                  <span className="text-primary font-medium"> space</span>.
+                </p>
+
+                {/* Strategic Pillars */}
+                <div className="mb-8">
+                  <h4 className="text-lg font-bold text-primary font-['Rajdhani'] tracking-wide uppercase mb-4">
+                    Strategic Pillars
+                  </h4>
+                  <div className="space-y-3 pl-4 border-l-2 border-primary/30">
+                    <div>
+                      <span className="text-primary font-semibold">1. Engineering Excellence</span>
+                      <p className="text-muted-foreground mt-1 ml-4">Build FPGA systems with exceptional reliability, performance, and precision.</p>
+                    </div>
+                    <div>
+                      <span className="text-primary font-semibold">2. Space-Grade Thinking</span>
+                      <p className="text-muted-foreground mt-1 ml-4">Apply engineering standards proven in space to real-world technology challenges.</p>
+                    </div>
+                    <div>
+                      <span className="text-primary font-semibold">3. Real-World Impact</span>
+                      <p className="text-muted-foreground mt-1 ml-4">Develop solutions that solve meaningful technical and industrial problems.</p>
+                    </div>
                   </div>
+                </div>
 
-                  {/* Mobile layout */}
-                  <div className="md:hidden pl-10 w-full">
-                    <TimelineCard year={m.year} era={m.era} points={m.points} />
+                {/* Core Values */}
+                <div className="mb-8">
+                  <h4 className="text-lg font-bold text-primary font-['Rajdhani'] tracking-wide uppercase mb-4">
+                    Core Values
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-4">
+                    {[
+                      { title: "Reliability", desc: "Systems must work where failure is not an option." },
+                      { title: "Engineering Discipline", desc: "Decisions are driven by physics, data, and testing." },
+                      { title: "Technical Courage", desc: "Push boundaries and explore new technical possibilities." },
+                      { title: "Collaboration", desc: "Breakthrough technologies are built by strong engineering teams." },
+                    ].map((v) => (
+                      <div key={v.title} className="flex items-start gap-3">
+                        <span className="text-primary mt-1 flex-shrink-0">◆</span>
+                        <div>
+                          <span className="text-foreground font-semibold">{v.title}</span>
+                          <p className="text-sm text-muted-foreground mt-0.5">{v.desc}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+
+                {/* Motto */}
+                <div className="border-l-4 border-primary pl-5 py-2 bg-primary/5 rounded-r-lg">
+                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary/60 font-['Rajdhani']">Engineering Motto</span>
+                  <p className="text-xl md:text-2xl font-medium text-foreground italic mt-1">
+                    "Space-proven engineering for real-world problems."
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Timeline section - separate from about bg */}
+      <div className="pt-24 pb-24">
+        <div className="container mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-center mb-14 text-foreground/80 font-['Rajdhani']">
+            Our Journey
+          </h3>
+
+          {/* Timeline */}
+          <div className="relative rounded-2xl overflow-hidden">
+            {/* Timeline background */}
+            <div className="absolute inset-0 pointer-events-none">
+              <img src={timelineBg} alt="" className="w-full h-full object-cover opacity-[0.7]" />
+            </div>
+            <div className="absolute inset-0 bg-background/20 pointer-events-none" />
+            {/* Central line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-primary/30 md:-translate-x-px" />
+
+            <div className="flex flex-col gap-0">
+              {milestones.map((m, i) => {
+                const isLeft = i % 2 === 0;
+                const topMargin = i === 0 ? 0 : isMobile ? 24 : gapMargins[i];
+
+                return (
+                  <motion.div
+                    key={m.year}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="relative flex items-start md:items-center"
+                    style={{ marginTop: topMargin }}
+                  >
+                    {/* Dot on the line */}
+                    <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary border-2 border-primary shadow-[0_0_10px_hsl(var(--glow)/0.5)] -translate-x-1.5 md:-translate-x-1.5 top-6 z-10" />
+
+                    {/* Desktop layout */}
+                    <div className="hidden md:grid grid-cols-2 gap-8 w-full">
+                      {isLeft ? (
+                        <>
+                          <div className="pr-10">
+                            <TimelineCard year={m.year} era={m.era} points={m.points} />
+                          </div>
+                          <div />
+                        </>
+                      ) : (
+                        <>
+                          <div />
+                          <div className="pl-10">
+                            <TimelineCard year={m.year} era={m.era} points={m.points} />
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Mobile layout */}
+                    <div className="md:hidden pl-10 w-full">
+                      <TimelineCard year={m.year} era={m.era} points={m.points} />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
