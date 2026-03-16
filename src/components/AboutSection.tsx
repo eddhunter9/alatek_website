@@ -148,7 +148,7 @@ const AboutSection = () => {
             {/* Decorative vertical accent */}
             <div className="absolute left-0 top-8 bottom-8 w-1 rounded-full hidden md:block overflow-hidden">
               <motion.div
-                className="w-full h-[200%] bg-gradient-to-b from-primary via-accent via-50% to-primary"
+                className="w-full h-[200%] bg-gradient-to-b from-accent via-primary via-50% to-accent"
                 animate={{ y: [0, "-50%"] }}
                 transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
               />
@@ -190,28 +190,28 @@ const AboutSection = () => {
 
                 {/* Strategic Pillars */}
                 <div className="mb-8">
-                  <h4 className="text-lg font-bold text-primary font-['Rajdhani'] tracking-wide uppercase mb-4">
+                  <h4 className="text-lg font-bold text-accent font-['Rajdhani'] tracking-wide uppercase mb-4">
                     Strategic Pillars
                   </h4>
-                  <div className="space-y-3 pl-4 border-l-2 border-primary/30">
+                  <div className="space-y-3 pl-4 border-l-2 border-accent/40">
                     <div>
-                      <span className="text-primary font-semibold">1. Engineering Excellence</span>
-                      <p className="text-muted-foreground mt-1 ml-4">Build FPGA systems with exceptional reliability, performance, and precision.</p>
+                      <span className="text-accent font-semibold">1. Engineering Excellence</span>
+                      <p className="text-foreground/80 mt-1 ml-4">Build FPGA systems with exceptional reliability, performance, and precision.</p>
                     </div>
                     <div>
-                      <span className="text-primary font-semibold">2. Space-Grade Thinking</span>
-                      <p className="text-muted-foreground mt-1 ml-4">Apply engineering standards proven in space to real-world technology challenges.</p>
+                      <span className="text-accent font-semibold">2. Space-Grade Thinking</span>
+                      <p className="text-foreground/80 mt-1 ml-4">Apply engineering standards proven in space to real-world technology challenges.</p>
                     </div>
                     <div>
-                      <span className="text-primary font-semibold">3. Real-World Impact</span>
-                      <p className="text-muted-foreground mt-1 ml-4">Develop solutions that solve meaningful technical and industrial problems.</p>
+                      <span className="text-accent font-semibold">3. Real-World Impact</span>
+                      <p className="text-foreground/80 mt-1 ml-4">Develop solutions that solve meaningful technical and industrial problems.</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Core Values */}
                 <div className="mb-8">
-                  <h4 className="text-lg font-bold text-primary font-['Rajdhani'] tracking-wide uppercase mb-4">
+                  <h4 className="text-lg font-bold text-accent font-['Rajdhani'] tracking-wide uppercase mb-4">
                     Core Values
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-4">
@@ -222,10 +222,10 @@ const AboutSection = () => {
                       { title: "Collaboration", desc: "Breakthrough technologies are built by strong engineering teams." },
                     ].map((v) => (
                       <div key={v.title} className="flex items-start gap-3">
-                        <span className="text-primary mt-1 flex-shrink-0">◆</span>
+                        <span className="text-accent mt-1 flex-shrink-0">◆</span>
                         <div>
                           <span className="text-foreground font-semibold">{v.title}</span>
-                          <p className="text-sm text-muted-foreground mt-0.5">{v.desc}</p>
+                          <p className="text-sm text-foreground/75 mt-0.5">{v.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -233,8 +233,8 @@ const AboutSection = () => {
                 </div>
 
                 {/* Motto */}
-                <div className="border-l-4 border-primary pl-5 py-2 bg-primary/5 rounded-r-lg">
-                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary/60 font-['Rajdhani']">Engineering Motto</span>
+                <div className="border-l-4 border-accent pl-5 py-3 bg-accent/10 rounded-r-lg backdrop-blur-sm">
+                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent/80 font-['Rajdhani']">Engineering Motto</span>
                   <p className="text-xl md:text-2xl font-medium text-foreground italic mt-1">
                     "Space-proven engineering for real-world problems."
                   </p>
