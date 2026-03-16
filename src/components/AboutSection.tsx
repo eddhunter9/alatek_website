@@ -148,7 +148,7 @@ const AboutSection = () => {
             {/* Decorative vertical accent */}
             <div className="absolute left-0 top-8 bottom-8 w-1 rounded-full hidden md:block overflow-hidden">
               <motion.div
-                className="w-full h-[200%] bg-gradient-to-b from-primary via-accent via-50% to-primary"
+                className="w-full h-[200%] bg-gradient-to-b from-accent via-primary via-50% to-accent"
                 animate={{ y: [0, "-50%"] }}
                 transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
               />
